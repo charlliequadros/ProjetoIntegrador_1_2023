@@ -52,8 +52,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("teste1", x => { x.AllowAnyOrigin(); });
-    options.AddPolicy("ffff", x => x.WithOrigins("https://google.com").WithMethods("GET"));
+    options.AddPolicy("CorsQualquerOrigem", x => { x.AllowAnyOrigin(); });
 });
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {

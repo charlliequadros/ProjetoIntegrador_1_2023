@@ -11,7 +11,7 @@ namespace ProjetoIntegradorAPI.Controllers
   //  [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("[controller]")]
-    [EnableCors("teste1")]
+    [EnableCors("CorsQualquerOrigem")]
     
     public class CoordenadasController : ControllerBase
     {
