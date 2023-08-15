@@ -35,12 +35,6 @@ namespace clientMqtt
             richTextBox1.Text += mensagem;
         }
 
-
-
-
-
-
-
         IManagedMqttClient _mqttClient;
         ManagedMqttClientOptions managedOptions;
 
@@ -77,25 +71,16 @@ namespace clientMqtt
 
             _mqttClient = new MqttFactory().CreateManagedMqttClient();
 
-
-
             _mqttClient.ApplicationMessageReceivedAsync += _mqttClient_ApplicationMessageReceivedAsync;
 
-
-
         }
-
-
 
         private Task _mqttClient_ApplicationMessageReceivedAsync(MqttApplicationMessageReceivedEventArgs arg)
         {
             var mensagem = arg.ApplicationMessage.Payload;
             string utfString = Encoding.UTF8.GetString(mensagem, 0, mensagem.Length);
-
             mensagemCruzadaLabelContador($"{utfString}\n");
             criarNovaCoordenada(utfString);
-            
-
             return Task.CompletedTask;
         }
 
@@ -118,13 +103,10 @@ namespace clientMqtt
                     coordenadas.HorarioUtc = time;
                 }
                 catch { }
-                
-
                 db.Coordenadas.Add(coordenadas);
                 db.SaveChanges();
             }
         }
-
 
         void fecharConexao()
         {
@@ -135,11 +117,7 @@ namespace clientMqtt
         async Task startAsync(ManagedMqttClientOptions options)
         {
             await _mqttClient.StartAsync(options);
-
         }
-
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -154,7 +132,6 @@ namespace clientMqtt
 
                 fecharConexao();
             }
-
 
         }
         public void PublishAsync(string topic, string payload, bool retainFlag = true, int qos = 1)
